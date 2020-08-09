@@ -680,19 +680,19 @@
 
         function deleteEducDoc(elem){
             db.collection("educations").doc(elem.id).delete().then(function(){
-                alert("delete id:" + elem.id);
+                alert("Document has been deleted! id:" + elem.id);
             });
         }
 
         function deleteOrgDoc(elem){
             db.collection("organizations").doc(elem.id).delete().then(function(){
-                alert("delete id:" + elem.id);
+                alert("Document has been deleted! id:" + elem.id);
             });
         }
 
         function deleteMPDoc(elem){
             db.collection("MPs").doc(elem.id).delete().then(function(){
-                alert("delete id:" + elem.id);
+                alert("Document has been deleted! id:" + elem.id);
             });
         }
 

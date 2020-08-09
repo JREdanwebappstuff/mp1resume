@@ -1,0 +1,376 @@
+<html>
+    <head>
+        <title>Ryan</title>
+        <link rel = "icon" type = "image/png" href = "moon.png"/>
+        <style>
+
+            /*For the whole website*/
+            body{
+                margin:0px;
+                padding:0px;
+                font-family: sans-serif;
+            }
+
+            /*Home*/
+            div#welcome{
+                position:relative;
+                display:inline-block;
+                padding: 20px 10px;
+                width:100%;
+                height:150px;
+                border-bottom:3px rgba(0,0,0,0.12) solid;
+                background-color:#004d1a;
+            }
+
+            .displaytext{
+                display:none;
+                padding: 20px;
+                text-shadow: 2px 2px gray;
+            }
+
+            /*Navigation bar styles*/
+            div#navbar{
+                position:sticky;
+                top:0px;
+                overflow: hidden;
+                background-color: grey;
+                z-index: 999999999;    /* a very large number to determine this div is on top of the container*/
+            }
+
+            #navbar a{
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            #navbar a:hover {
+            background-color: #4caf50;
+            color:black;
+            transition:all 0.2s ease-in;
+            }
+
+            a#toright{
+                float:right;
+            }
+
+            /*Education div*/
+            div#education{
+                background-color: lightgray;
+                position: relative;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                padding: 20px;
+                padding-bottom: 100px;
+                width:100%;
+            }
+
+            /*Org div*/
+            div#organizations{
+                background-color:#4caf50;
+                padding: 20px;
+                padding-bottom: 100px;
+                position:relative;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+            }
+
+            /*MP div*/
+            div#MPs{
+                padding: 20px;
+                position:relative;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+            }
+
+            /*About me div*/
+            div#aboutme{
+                padding: 20px;
+                padding-top: 100px;
+                padding-bottom: 100px;
+                position:relative;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+                background-color: darkgray;
+            }
+
+            /*Hobby div*/
+            div#hobby{
+                padding: 20px;
+                padding-bottom: 100px;                
+                position:relative;
+                display:flex;
+                flex-direction:column;
+                justify-content:center;
+                align-items:center;
+                width:100%;
+                background-color:#4caf50;
+            }
+
+            /*images (for contact and schools)*/
+            img#logos{
+                display:inline-block;
+                height: 250px;
+                width: 250px;
+            }
+
+            /*Contact infos*/
+            img#othersimg{
+                display:inline-block;
+                height:20px;
+                width:20px;
+            }
+
+            div#links{
+                display:block;
+                padding:20px;
+                height: 150px;
+                width:100%;
+                background-color: gray;
+            }
+
+            /*For each entry from the db*/
+            span#educBlock, span#orgBlock, span#mpBlock, span#hobbyBlock{
+                padding: 20px;
+                flex-grow:1;
+                display:flex;
+            }
+
+            /*for scrrolling*/
+            #anchoreduc, #anchororg, #anchormp, #anchorabout, #anchorhobby{
+                position:absolute;
+                top: -50px;
+            }
+
+            /*Other styles*/
+            p.value{
+                padding-left: 100px;
+                padding-right: 100px;
+                text-align: justify;
+                width:600px;
+            }
+
+            p.title{
+                font-weight: 1000;
+            }
+
+            /*edit.html buttons*/
+            span.button{
+                display:none;
+                align-self: flex-start;
+                border: 1px solid gray;
+                padding: 5px;
+            }
+
+            span.button:hover{
+                color: white;
+                background-color: red;
+                transition:all 0.2s ease-in
+            }
+
+            span.button#edit:hover, span.button#addeduc:hover, span.button#addorg:hover, span.button#addmp:hover{
+                color: white;
+                background-color: green;
+                transition:all 0.2s ease-in
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id = "container">
+            <div id = "welcome">
+                <h1 class = "displaytext">Welcome to my website!</h1>
+                <h1 class = "displaytext">Hello! I am Ryan!</h1>
+                <h1 class = "displaytext">私のウェブサイトへようこそ！</h1>
+                <h1 class = "displaytext">こんにちは！私はライアンです</h1>
+                <h1 class = "displaytext">欢迎来到我的网站!</h1>
+                <h1 class = "displaytext">你好我叫Ryan!</h1>
+                <h1 class = "displaytext">Bienvenue sur mon site web!</h1>
+                <h1 class = "displaytext">salut! Mon nom est Ryan!</h1>
+                <h1 class = "displaytext">¡Bienvenidos a mi sitio web!</h1>
+                <h1 class = "displaytext">¡Hola! ¡Mi nombre es Ryan!</h1>
+            </div>
+
+            <div id = "navbar">
+                <a href ="#welcome">Home</a>
+                <a href = "#anchoreduc">Education</a>
+                <a href = "#anchororg">Organizations</a>
+                <a href = "#anchormp">MPs</a>
+                <a href = "#anchorabout">About me</a>
+                <a href = "#anchorhobby">Hobbies</a>
+                <a id ="toright" href ="edit.html">Edit Me!</a>
+            </div>
+
+            <div id="education">
+                <span id="anchoreduc"></span>
+                <span class="button" id="addeduc">Add</span>
+                <h1>Educational Background</h1>
+            </div>
+
+            <div id="organizations">
+                <span id="anchororg"></span>
+                <span class="button" id="addorg">Add</span>
+                <h1>Organizations</h1>
+            </div>
+
+            <div id="MPs">
+                <span id="anchormp"></span>
+                <span class="button" id="addmp">Add</span>
+                <h1>Machine Projects/ Previous Works</h1>
+            </div>
+
+            <div id="aboutme">
+                <span id="anchorabout"></span>
+                <h1>About me</h1>
+            </div>
+
+            <div id="hobby">
+                <span id="anchorhobby"></span>
+                <h1>My hobbies are:</h1>
+            </div>
+
+            <div id="links">
+                <h1>Links:</h1>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script>
+
+            (function(){
+
+                var quotes = $(".displaytext");
+                var quoteIndex = -1;
+
+                function showNextQuote(){
+                    ++quoteIndex;
+                    quotes.eq(quoteIndex % quotes.length).fadeIn(2000).delay(2000).fadeOut(2000, showNextQuote);
+                }
+
+                showNextQuote();
+            })();
+
+            $(document).ready(function(){
+                $("a").on('click', function(event){
+                    if(this.hash !== ""){
+                        event.preventDefault();
+
+                        var hash = this.hash;
+
+                        $('html, body').animate({
+                            scrollTop: $(hash).offset().top
+                        }, 800, function(){
+                            window.location.hash = hash;
+                        })
+                    }
+                });
+            });
+        </script>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+        <script>
+
+            // Your web app's Firebase configuration
+
+        var firebaseConfig = {
+        apiKey: "AIzaSyCt0oKWohBhZIrH6mqnfX3eNS51yqAVccs",
+        authDomain: "ccappdev-resume-9d4ee.firebaseapp.com",
+        databaseURL: "https://ccappdev-resume-9d4ee.firebaseio.com",
+        projectId: "ccappdev-resume-9d4ee",
+        storageBucket: "ccappdev-resume-9d4ee.appspot.com",
+        messagingSenderId: "355298272148",
+        appId: "1:355298272148:web:4d8d3a0ef1c1cf29526581"
+        };
+        // Initialize Firebase
+        var defProj = firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+
+        var educRef = db.collection("educations");
+        educRef.orderBy("year", "asc").get().then(function(snapshot){
+            snapshot.forEach(doc => {
+                console.log(doc.data());
+                document.getElementById('education').innerHTML += '<span id = "educBlock"><br>';
+                document.getElementById('education').innerHTML += '<span class = "button" id="' + doc.id + '">Delete</span>';
+                if(doc.data().imglink != "")
+                    document.getElementById('education').innerHTML += '<img id = "logos" src = "' + doc.data().imglink + '"/>';
+                document.getElementById('education').innerHTML += '<p class = "title">' + doc.data().attainment + '</p>';
+                document.getElementById('education').innerHTML += '<p>' + doc.data().school + '</p>';
+                document.getElementById('education').innerHTML += '<p>' + doc.data().year + '</p>';
+                document.getElementById('education').innerHTML += '</span><br>';
+            });
+        });
+
+        var orgRef = db.collection("organizations");
+        orgRef.orderBy("startYear", "asc").get().then(function(snapshot){
+            snapshot.forEach(doc => {
+                document.getElementById('organizations').innerHTML += '<span id = "orgBlock"><br>';
+                document.getElementById('organizations').innerHTML += '<span class = "button" id="' + doc.id + '">Delete</span>';
+                document.getElementById('organizations').innerHTML += '<p class = "title">' + doc.data().orgname + '</p>';
+                document.getElementById('organizations').innerHTML += '<p>' + doc.data().position + '</p>';
+                document.getElementById('organizations').innerHTML += '<p>' + doc.data().startYear + '-' + doc.data().endYear + '</p>';
+                document.getElementById('organizations').innerHTML += '</span><br>';
+            });
+        });
+
+        var mpRef = db.collection("MPs");
+        mpRef.orderBy("order", "asc").get().then(function(snapshot){
+            snapshot.forEach(doc => {                 
+                document.getElementById('MPs').innerHTML += '<span id = "mpBlock"><br>';
+                document.getElementById('MPs').innerHTML += '<span class = "button" id="' + doc.id + '">Delete</span>';
+                document.getElementById('MPs').innerHTML += '<p class = "title">' + doc.data().title + '</p>';
+                document.getElementById('MPs').innerHTML += '<p>' + doc.data().course + '</p>';
+                document.getElementById('MPs').innerHTML += '<p class = "value">' + doc.data().desc + '</p>';
+                document.getElementById('MPs').innerHTML += '</span><br>';
+            });
+        });
+
+        var othersRef = db.collection("others").doc("intro");
+        othersRef.get().then(function(doc){
+            document.getElementById('aboutme').innerHTML += '<span class = "button" id ="' + doc.id + '">Edit</span>';
+            document.getElementById("aboutme").innerHTML += '<p class = "value">' + doc.data().value + '</p>';
+        });
+
+        var hobbyRef = db.collection("hobbies");
+        hobbyRef.get().then(function(snapshot){
+            snapshot.forEach(doc => {
+                document.getElementById('hobby').innerHTML += '<span class ="hobbyBlock" id ="' + doc.id + '"</span>';
+                document.getElementById('hobby').innerHTML += '<p class = "hobbyBlock">';
+                document.getElementById('hobby').innerHTML += doc.data().value + '</p>';
+            });
+        });
+
+        var othersRef2 = db.collection("others").doc("links");
+
+        othersRef2.get().then(function(doc){
+            document.getElementById("links").innerHTML += '<img id = "othersimg" src = "' + doc.data().fbimg + '"/>';
+            document.getElementById("links").innerHTML += '<a href = "' + doc.data().facebook + '">Facebook</a><br>';
+            document.getElementById("links").innerHTML += '<img id = "othersimg" src = "' + doc.data().githubimg + '"/>';
+            document.getElementById("links").innerHTML += '<a href = "' + doc.data().github + '">Github</a><br>';
+        });
+        </script>
+
+    </body>
+
+</html>

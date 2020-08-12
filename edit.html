@@ -679,6 +679,7 @@
             db.collection("MPs").add(newMpObj).then(function(doc){
                 if(!alert("New document added! id: " + doc.id)){
                     window.location.reload();
+                };
             });
             clearForms();
         }

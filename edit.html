@@ -545,10 +545,16 @@
                         document.getElementById('maincontainer').style.display = "block";
                     }
                 }).catch(function(err){
-                    if(err.code == "auth/wrong-password")
-                        alert("wrong password! Please try again!");
-                    else   
-                        alert(err.message + " Please try again!");
+                    if(err.code == "auth/wrong-password"){
+                        if(!alert("wrong password! Please try again!")){
+                            window.location.reload();
+                        };
+                    }
+                    else{
+                        if(!alert(err.message + " Please try again!")){
+                            window.location.reload();
+                        };
+                    }
                 });
                 clearForms();  
             }

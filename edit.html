@@ -643,7 +643,9 @@
                 imglink = "";
             
             db.collection("educations").add(newEducObj).then(function(doc){
-                alert("New document added! id: " + doc.id);
+                if(!alert("New document added! id: " + doc.id)){
+                    window.location.reload();
+                };
             });
             clearForms();
         }
@@ -658,7 +660,8 @@
             }
 
             db.collection("organizations").add(newOrgObj).then(function(doc){
-                alert("New document added! id: " + doc.id);
+                if(!alert("New document added! id: " + doc.id)){
+                    window.location.reload();
             });
             clearForms();
         }
@@ -673,26 +676,33 @@
             }
 
             db.collection("MPs").add(newMpObj).then(function(doc){
-                alert("New document added! id: " + doc.id);
+                if(!alert("New document added! id: " + doc.id)){
+                    window.location.reload();
             });
             clearForms();
         }
 
         function deleteEducDoc(elem){
             db.collection("educations").doc(elem.id).delete().then(function(){
-                alert("Document has been deleted! id:" + elem.id);
+                if(!alert("Document has been deleted! id:" + elem.id)){
+                    window.location.reload();
+                };
             });
         }
 
         function deleteOrgDoc(elem){
             db.collection("organizations").doc(elem.id).delete().then(function(){
-                alert("Document has been deleted! id:" + elem.id);
+                if(!alert("Document has been deleted! id:" + elem.id)){
+                    window.location.reload();
+                };
             });
         }
 
         function deleteMPDoc(elem){
             db.collection("MPs").doc(elem.id).delete().then(function(){
-                alert("Document has been deleted! id:" + elem.id);
+                if(!alert("Document has been deleted! id:" + elem.id)){
+                    window.location.reload();
+                };
             });
         }
 
@@ -724,7 +734,9 @@
             aboutMeRef.update({
                 value: document.getElementById('toupdate').value
             }).then(function(){
-                alert("About me description successfully updated!");
+                if(!alert("About me description successfully updated!")){
+                    window.location.reload();
+                };
             });
         }
         </script>

@@ -650,7 +650,24 @@
             
             db.collection("educations").add(newEducObj).then(function(doc){
                 if(!alert("New document added! id: " + doc.id)){
-                    window.location.reload();
+                    $("div#education").empty();
+                    document.getElementById("education").innerHTML += '<span id="anchoreduc"></span>'
+                    document.getElementById("education").innerHTML += '<span class="button" id="addeducspan" onclick = addEduc()>Add</span>'
+                    document.getElementById("education").innerHTML += '<h1>Educational Background</h1>'
+
+                    var educRef = db.collection("educations");
+                    educRef.orderBy("year", "asc").get().then(function(snapshot){
+                    snapshot.forEach(doc => {
+                        document.getElementById('education').innerHTML += '<span id = "educBlock"><br>';
+                        document.getElementById('education').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteEducDoc(this)>Delete</span>';
+                        if(doc.data().imglink != "")
+                            document.getElementById('education').innerHTML += '<img id = "logos" src = "' + doc.data().imglink + '"/>';
+                        document.getElementById('education').innerHTML += '<p class = "title">' + doc.data().attainment + '</p>';
+                        document.getElementById('education').innerHTML += '<p>' + doc.data().school + '</p>';
+                        document.getElementById('education').innerHTML += '<p>' + doc.data().year + '</p>';
+                        document.getElementById('education').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
             clearForms();
@@ -667,7 +684,22 @@
 
             db.collection("organizations").add(newOrgObj).then(function(doc){
                 if(!alert("New document added! id: " + doc.id)){
-                    window.location.reload();
+                    $("div#organizations").empty();
+                    document.getElementById("organizations").innerHTML += '<span id="anchororg"></span>'
+                    document.getElementById("organizations").innerHTML += '<span class="button" id="addorgspan" onclick = addOrg()>Add</span>'
+                    document.getElementById("organizations").innerHTML += '<h1>Organizations</h1>'
+
+                    var orgRef = db.collection("organizations");
+                    orgRef.orderBy("startYear", "asc").get().then(function(snapshot){
+                    snapshot.forEach(doc => {
+                        document.getElementById('organizations').innerHTML += '<span id = "orgBlock"><br>';
+                        document.getElementById('organizations').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteOrgDoc(this)>Delete</span>';
+                        document.getElementById('organizations').innerHTML += '<p class = "title">' + doc.data().orgname + '</p>';
+                        document.getElementById('organizations').innerHTML += '<p>' + doc.data().position + '</p>';
+                        document.getElementById('organizations').innerHTML += '<p>' + doc.data().startYear + '-' + doc.data().endYear + '</p>';
+                        document.getElementById('organizations').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
             clearForms();
@@ -684,7 +716,22 @@
 
             db.collection("MPs").add(newMpObj).then(function(doc){
                 if(!alert("New document added! id: " + doc.id)){
-                    window.location.reload();
+                    $("div#MPs").empty();
+                    document.getElementById("MPs").innerHTML += '<span id="anchormp"></span>'
+                    document.getElementById("MPs").innerHTML += '<span class="button" id="addmpspan" onclick = addMp()>Add</span>'
+                    document.getElementById("MPs").innerHTML += '<h1>Machine Projects/ Previous Works</h1>'
+
+                    var mpRef = db.collection("MPs");
+                    mpRef.orderBy("order", "asc").get().then(function(snapshot){
+                        snapshot.forEach(doc => {                 
+                            document.getElementById('MPs').innerHTML += '<span id = "mpBlock"><br>';
+                            document.getElementById('MPs').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteMPDoc(this)>Delete</span>';
+                            document.getElementById('MPs').innerHTML += '<p class = "title">' + doc.data().title + '</p>';
+                            document.getElementById('MPs').innerHTML += '<p>' + doc.data().course + '</p>';
+                            document.getElementById('MPs').innerHTML += '<p class = "value">' + doc.data().desc + '</p>';
+                            document.getElementById('MPs').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
             clearForms();
@@ -693,7 +740,24 @@
         function deleteEducDoc(elem){
             db.collection("educations").doc(elem.id).delete().then(function(){
                 if(!alert("Document has been deleted! id:" + elem.id)){
-                    window.location.reload();
+                    $("div#education").empty();
+                    document.getElementById("education").innerHTML += '<span id="anchoreduc"></span>'
+                    document.getElementById("education").innerHTML += '<span class="button" id="addeducspan" onclick = addEduc()>Add</span>'
+                    document.getElementById("education").innerHTML += '<h1>Educational Background</h1>'
+
+                    var educRef = db.collection("educations");
+                    educRef.orderBy("year", "asc").get().then(function(snapshot){
+                    snapshot.forEach(doc => {
+                        document.getElementById('education').innerHTML += '<span id = "educBlock"><br>';
+                        document.getElementById('education').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteEducDoc(this)>Delete</span>';
+                        if(doc.data().imglink != "")
+                            document.getElementById('education').innerHTML += '<img id = "logos" src = "' + doc.data().imglink + '"/>';
+                        document.getElementById('education').innerHTML += '<p class = "title">' + doc.data().attainment + '</p>';
+                        document.getElementById('education').innerHTML += '<p>' + doc.data().school + '</p>';
+                        document.getElementById('education').innerHTML += '<p>' + doc.data().year + '</p>';
+                        document.getElementById('education').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
         }
@@ -701,7 +765,22 @@
         function deleteOrgDoc(elem){
             db.collection("organizations").doc(elem.id).delete().then(function(){
                 if(!alert("Document has been deleted! id:" + elem.id)){
-                    window.location.reload();
+                    $("div#organizations").empty();
+                    document.getElementById("organizations").innerHTML += '<span id="anchororg"></span>'
+                    document.getElementById("organizations").innerHTML += '<span class="button" id="addorgspan" onclick = addOrg()>Add</span>'
+                    document.getElementById("organizations").innerHTML += '<h1>Organizations</h1>'
+
+                    var orgRef = db.collection("organizations");
+                    orgRef.orderBy("startYear", "asc").get().then(function(snapshot){
+                    snapshot.forEach(doc => {
+                        document.getElementById('organizations').innerHTML += '<span id = "orgBlock"><br>';
+                        document.getElementById('organizations').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteOrgDoc(this)>Delete</span>';
+                        document.getElementById('organizations').innerHTML += '<p class = "title">' + doc.data().orgname + '</p>';
+                        document.getElementById('organizations').innerHTML += '<p>' + doc.data().position + '</p>';
+                        document.getElementById('organizations').innerHTML += '<p>' + doc.data().startYear + '-' + doc.data().endYear + '</p>';
+                        document.getElementById('organizations').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
         }
@@ -709,7 +788,22 @@
         function deleteMPDoc(elem){
             db.collection("MPs").doc(elem.id).delete().then(function(){
                 if(!alert("Document has been deleted! id:" + elem.id)){
-                    window.location.reload();
+                    $("div#MPs").empty();
+                    document.getElementById("MPs").innerHTML += '<span id="anchormp"></span>'
+                    document.getElementById("MPs").innerHTML += '<span class="button" id="addmpspan" onclick = addMp()>Add</span>'
+                    document.getElementById("MPs").innerHTML += '<h1>Machine Projects/ Previous Works</h1>'
+
+                    var mpRef = db.collection("MPs");
+                    mpRef.orderBy("order", "asc").get().then(function(snapshot){
+                        snapshot.forEach(doc => {                 
+                            document.getElementById('MPs').innerHTML += '<span id = "mpBlock"><br>';
+                            document.getElementById('MPs').innerHTML += '<span class = "button" id="' + doc.id + '" onclick = deleteMPDoc(this)>Delete</span>';
+                            document.getElementById('MPs').innerHTML += '<p class = "title">' + doc.data().title + '</p>';
+                            document.getElementById('MPs').innerHTML += '<p>' + doc.data().course + '</p>';
+                            document.getElementById('MPs').innerHTML += '<p class = "value">' + doc.data().desc + '</p>';
+                            document.getElementById('MPs').innerHTML += '</span><br>';
+                        });
+                    });
                 };
             });
         }
@@ -743,7 +837,16 @@
                 value: document.getElementById('toupdate').value
             }).then(function(){
                 if(!alert("About me description successfully updated!")){
-                    window.location.reload();
+                    $("div#aboutme").empty();
+                    document.getElementById("aboutme").innerHTML += '<span id="anchorabout"></span>'
+                    document.getElementById("aboutme").innerHTML += '<h1>About me</h1>'
+                    document.getElementById("aboutme").innerHTML += '<span class = "button" onclick = editForm()>Edit</span>'
+
+                    var othersRef = db.collection("others").doc("intro");
+                    othersRef.get().then(function(doc){
+                        document.getElementById("aboutme").innerHTML += '<p class = "value">' + doc.data().value + '</p>';
+                    });
+                    document.getElementById("editAboutMe").style.display = "none";
                 };
             });
         }
